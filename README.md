@@ -1,59 +1,217 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Ormano
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Ormano is a cloud-based **Legal ERP** system designed specifically for Syrian law offices. It helps lawyers replace paper-heavy workflows with a structured digital platform for case management, legal scheduling, document archiving, financial tracking, and AI-assisted legal writing.
 
-## About Laravel
+The system is built to support the real operating conditions of local legal practice, including **offline-first usage**, strict **role-based access**, and fast access to case files from both desktop and mobile devices.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## System Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Ormano is designed to solve the daily operational challenges faced by legal professionals by combining administration, legal workflow, document handling, and reporting into one platform.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Its main goals are to:
 
-## Learning Laravel
+- digitize paper-based legal work
+- reduce missed legal deadlines
+- improve internal office coordination
+- simplify drafting of legal documents
+- provide secure and traceable access to case data
+- support unstable internet environments through offline-first capabilities
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Core Features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. Case Management
+A complete digital archive for legal cases, including:
 
-## Laravel Sponsors
+- case number
+- court name
+- parties involved
+- status and history
+- event timeline for each case
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+This allows lawyers and staff to quickly retrieve the full context of any case without depending on paper folders.
 
-### Premium Partners
+### 2. Legal Calendar
+A dedicated legal calendar for managing:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- court hearings
+- service and notification dates
+- appeal deadlines
+- critical legal time limits
 
-## Contributing
+The calendar includes a notification system to alert users before important deadlines, helping prevent missed sessions or procedural time limits.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Offline-First Operation
+Ormano is built to work in environments where internet access may be unreliable.
 
-## Code of Conduct
+Users can:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- browse key data offline
+- review schedules
+- add hearing notes while at court
+- sync data later when connectivity returns
 
-## Security Vulnerabilities
+This is an essential capability for field work and daily legal operations.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 4. Roles and Permissions
+The system supports different user roles with controlled access to data and actions, such as:
+
+- senior lawyer
+- trainee lawyer
+- secretary / administrative staff
+
+This helps protect confidential legal information and ensures that each user only sees or edits what they are authorized to handle.
+
+### 5. Document Scanning and Archiving
+Users can upload and link scanned documents directly to a case, including:
+
+- powers of attorney
+- court documents
+- IDs and supporting evidence
+- signed papers and attachments
+
+This makes it possible to access case files instantly from mobile devices or office workstations.
+
+### 6. Clever Templates
+Ormano can automatically generate the opening structure of legal documents and pleadings using case data, such as:
+
+- court name
+- claimant and defendant names
+- case references
+- common legal formatting elements
+
+This reduces repetitive manual drafting and improves consistency across documents.
+
+### 7. AI Writing Agent
+The platform includes an AI-powered legal writing assistant that can help with tasks such as:
+
+- suggesting legal phrasing
+- drafting initial text for memoranda
+- summarizing opposing party submissions
+- accelerating document preparation
+
+This feature is intended to support lawyers, not replace legal judgment.
+
+### 8. Financial Ledger
+A built-in financial module helps track:
+
+- legal fees
+- client advances
+- case expenses
+- stamp costs
+- court and filing fees
+- simplified invoices
+
+This gives law offices better visibility into revenue, expenses, and case-level financial activity.
+
+### 9. Audit Logs
+Every important action can be traced, including:
+
+- who edited a record
+- who uploaded a document
+- when a change happened
+
+Audit logs are especially important for larger law offices where multiple users collaborate on the same cases.
+
+### 10. Arabic / English Support
+The system is primarily designed with an Arabic interface, while also supporting English output for selected reports and communication needs.
+
+### 11. Client Portal
+A lightweight client portal allows clients to follow the status of their case without needing to directly contact the lawyer for every update.
+
+This can improve transparency and reduce repetitive follow-up communication.
+
+### 12. Legal Library
+The platform can be connected to a searchable legal knowledge base that includes:
+
+- Syrian laws
+- legal references
+- judicial precedents
+
+This helps lawyers search legal sources more quickly while working on cases and memoranda.
+
+### 13. Online Payment Support
+Where available, the system can integrate with local online payment solutions or agent-based balance top-up workflows.
+
+### 14. Analytics and Reporting
+Ormano can provide visual and operational reports related to:
+
+- case success rates
+- employee productivity
+- monthly profits
+- office performance metrics
+
+These insights support better business and legal decision-making.
+
+### 15. Physical File Tracking
+Even when paper files still exist, the system can track the physical location of each paper dossier inside office shelves or storage locations.
+
+This reduces time wasted searching for physical files.
+
+## Target Users
+
+Ormano is intended for:
+
+- independent lawyers
+- small and medium-sized law offices
+- larger legal practices with multiple staff roles
+- legal teams that need mobile access and auditability
+- offices transitioning from paper-based systems to digital operations
+
+## Key Value Proposition
+
+Ormano is more than a simple case tracker. It is a full legal operations platform focused on the practical needs of Syrian legal professionals.
+
+It combines:
+
+- legal case administration
+- scheduling and deadline protection
+- document management
+- AI-assisted drafting
+- financial tracking
+- client communication
+- offline usability
+
+## Technology Stack
+
+This repository is currently structured as a Laravel application with a modern frontend asset pipeline.
+
+Main technologies in the project include:
+
+- Laravel
+- PHP
+- Vite
+- JavaScript
+- CSS
+
+## Getting Started
+
+### Requirements
+
+- PHP 8+
+- Composer
+- Node.js and npm
+- a database supported by Laravel
+
+### Installation
+
+```bash
+composer install
+npm install
+cp .env.example .env
+php artisan key:generate
+```
+
+### Run the application
+
+```bash
+php artisan serve
+npm run dev
+```
+
+## Future Direction
+
+The long-term vision of Ormano is to become a complete legal operating system for law offices, with reliable offline access, Arabic-first usability, intelligent automation, and secure collaboration between lawyers, staff, and clients.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is proprietary unless a separate license is provided by the project owner.
