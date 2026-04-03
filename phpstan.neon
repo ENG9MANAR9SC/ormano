@@ -1,0 +1,23 @@
+includes:
+    - ./vendor/larastan/larastan/extension.neon
+
+parameters:
+    paths:
+        - app
+        - config
+        - database
+        - routes
+        - tests
+
+    level: 5
+
+    tmpDir: storage/framework/cache/phpstan
+
+    treatPhpDocTypesAsCertain: false
+
+    excludePaths:
+        - bootstrap/cache/*
+        - storage/*
+
+    ignoreErrors:
+        - '#Access to constant ATTR_SSL_CA on an unknown class Pdo\\Mysql#'
