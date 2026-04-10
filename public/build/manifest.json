@@ -1,4 +1,103 @@
 {
+  "_VAlert-DPVT18nn.js": {
+    "file": "assets/VAlert-DPVT18nn.js",
+    "name": "VAlert",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/VAlert-ZrqO6mfg.css"
+    ]
+  },
+  "_VAlert-ZrqO6mfg.css": {
+    "file": "assets/VAlert-ZrqO6mfg.css",
+    "src": "_VAlert-ZrqO6mfg.css"
+  },
+  "_VChip-BjjvW4VI.js": {
+    "file": "assets/VChip-BjjvW4VI.js",
+    "name": "VChip",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/VChip-qug_FdSo.css"
+    ]
+  },
+  "_VChip-qug_FdSo.css": {
+    "file": "assets/VChip-qug_FdSo.css",
+    "src": "_VChip-qug_FdSo.css"
+  },
+  "_VContainer-BOUzs39-.css": {
+    "file": "assets/VContainer-BOUzs39-.css",
+    "src": "_VContainer-BOUzs39-.css"
+  },
+  "_VContainer-DWIUgGa9.js": {
+    "file": "assets/VContainer-DWIUgGa9.js",
+    "name": "VContainer",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/VContainer-BOUzs39-.css"
+    ]
+  },
+  "_VRow-BQQfMNrT.js": {
+    "file": "assets/VRow-BQQfMNrT.js",
+    "name": "VRow",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/VRow-DDRCOKk3.css"
+    ]
+  },
+  "_VRow-DDRCOKk3.css": {
+    "file": "assets/VRow-DDRCOKk3.css",
+    "src": "_VRow-DDRCOKk3.css"
+  },
+  "_VSelect-7qgOs3DM.css": {
+    "file": "assets/VSelect-7qgOs3DM.css",
+    "src": "_VSelect-7qgOs3DM.css"
+  },
+  "_VSelect-B9iN3zPo.js": {
+    "file": "assets/VSelect-B9iN3zPo.js",
+    "name": "VSelect",
+    "imports": [
+      "resources/js/app.js",
+      "_VChip-BjjvW4VI.js"
+    ],
+    "css": [
+      "assets/VSelect-7qgOs3DM.css"
+    ]
+  },
+  "_VTable-BGfh8qQy.css": {
+    "file": "assets/VTable-BGfh8qQy.css",
+    "src": "_VTable-BGfh8qQy.css"
+  },
+  "_VTable-rNnHN6Wq.js": {
+    "file": "assets/VTable-rNnHN6Wq.js",
+    "name": "VTable",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/VTable-BGfh8qQy.css"
+    ]
+  },
+  "_VTextarea-BlochgZh.js": {
+    "file": "assets/VTextarea-BlochgZh.js",
+    "name": "VTextarea",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/VTextarea-xiMOHEu-.css"
+    ]
+  },
+  "_VTextarea-xiMOHEu-.css": {
+    "file": "assets/VTextarea-xiMOHEu-.css",
+    "src": "_VTextarea-xiMOHEu-.css"
+  },
   "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot": {
     "file": "assets/materialdesignicons-webfont-CSr8KVlo.eot",
     "src": "node_modules/@mdi/font/fonts/materialdesignicons-webfont.eot"
@@ -25,12 +124,27 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-Dp5r1cei.js",
+    "file": "assets/app-AjKDCBWw.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
+    "dynamicImports": [
+      "resources/js/views/DashboardView.vue",
+      "resources/js/views/cases/CasesListView.vue",
+      "resources/js/views/cases/CaseFormView.vue",
+      "resources/js/views/cases/CaseShowView.vue",
+      "resources/js/views/cases/CaseFormView.vue",
+      "resources/js/views/clients/ClientsListView.vue",
+      "resources/js/views/clients/ClientFormView.vue",
+      "resources/js/views/clients/ClientShowView.vue",
+      "resources/js/views/clients/ClientFormView.vue",
+      "resources/js/views/courts/CourtsListView.vue",
+      "resources/js/views/courts/CourtFormView.vue",
+      "resources/js/views/courts/CourtShowView.vue",
+      "resources/js/views/courts/CourtFormView.vue"
+    ],
     "css": [
-      "assets/app-B_XW_23p.css",
+      "assets/app-DUrSV-g5.css",
       "assets/app-I3dj0z5H.css"
     ],
     "assets": [
@@ -38,6 +152,165 @@
       "assets/materialdesignicons-webfont-Dp5v-WZN.woff2",
       "assets/materialdesignicons-webfont-PXm3-2wK.woff",
       "assets/materialdesignicons-webfont-B7mPwVP_.ttf"
+    ]
+  },
+  "resources/js/views/DashboardView.vue": {
+    "file": "assets/DashboardView-DM94jj3M.js",
+    "name": "DashboardView",
+    "src": "resources/js/views/DashboardView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_VRow-BQQfMNrT.js",
+      "_VChip-BjjvW4VI.js",
+      "_VContainer-DWIUgGa9.js"
+    ],
+    "css": [
+      "assets/app-I3dj0z5H.css"
+    ]
+  },
+  "resources/js/views/cases/CaseFormView.vue": {
+    "file": "assets/CaseFormView-mos0L5r-.js",
+    "name": "CaseFormView",
+    "src": "resources/js/views/cases/CaseFormView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_VContainer-DWIUgGa9.js",
+      "_VAlert-DPVT18nn.js",
+      "_VTextarea-BlochgZh.js",
+      "_VRow-BQQfMNrT.js",
+      "_VSelect-B9iN3zPo.js",
+      "_VChip-BjjvW4VI.js"
+    ],
+    "css": [
+      "assets/app-I3dj0z5H.css"
+    ]
+  },
+  "resources/js/views/cases/CaseShowView.vue": {
+    "file": "assets/CaseShowView-DM07GAjH.js",
+    "name": "CaseShowView",
+    "src": "resources/js/views/cases/CaseShowView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_VContainer-DWIUgGa9.js",
+      "_VAlert-DPVT18nn.js",
+      "_VRow-BQQfMNrT.js"
+    ],
+    "css": [
+      "assets/app-I3dj0z5H.css"
+    ]
+  },
+  "resources/js/views/cases/CasesListView.vue": {
+    "file": "assets/CasesListView-DwcmCh26.js",
+    "name": "CasesListView",
+    "src": "resources/js/views/cases/CasesListView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_VContainer-DWIUgGa9.js",
+      "_VAlert-DPVT18nn.js",
+      "_VTable-rNnHN6Wq.js"
+    ],
+    "css": [
+      "assets/app-I3dj0z5H.css"
+    ]
+  },
+  "resources/js/views/clients/ClientFormView.vue": {
+    "file": "assets/ClientFormView-B49cQS_J.js",
+    "name": "ClientFormView",
+    "src": "resources/js/views/clients/ClientFormView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_VContainer-DWIUgGa9.js",
+      "_VAlert-DPVT18nn.js",
+      "_VTextarea-BlochgZh.js",
+      "_VRow-BQQfMNrT.js"
+    ],
+    "css": [
+      "assets/app-I3dj0z5H.css"
+    ]
+  },
+  "resources/js/views/clients/ClientShowView.vue": {
+    "file": "assets/ClientShowView-ClKTVuBS.js",
+    "name": "ClientShowView",
+    "src": "resources/js/views/clients/ClientShowView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_VContainer-DWIUgGa9.js",
+      "_VAlert-DPVT18nn.js",
+      "_VRow-BQQfMNrT.js"
+    ],
+    "css": [
+      "assets/app-I3dj0z5H.css"
+    ]
+  },
+  "resources/js/views/clients/ClientsListView.vue": {
+    "file": "assets/ClientsListView-BXiF3JNj.js",
+    "name": "ClientsListView",
+    "src": "resources/js/views/clients/ClientsListView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_VContainer-DWIUgGa9.js",
+      "_VAlert-DPVT18nn.js",
+      "_VTable-rNnHN6Wq.js"
+    ],
+    "css": [
+      "assets/app-I3dj0z5H.css"
+    ]
+  },
+  "resources/js/views/courts/CourtFormView.vue": {
+    "file": "assets/CourtFormView-Bz9XsAL3.js",
+    "name": "CourtFormView",
+    "src": "resources/js/views/courts/CourtFormView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_VContainer-DWIUgGa9.js",
+      "_VAlert-DPVT18nn.js",
+      "_VTextarea-BlochgZh.js",
+      "_VRow-BQQfMNrT.js",
+      "_VSelect-B9iN3zPo.js",
+      "_VChip-BjjvW4VI.js"
+    ],
+    "css": [
+      "assets/CourtFormView-CaOOdN36.css",
+      "assets/app-I3dj0z5H.css"
+    ]
+  },
+  "resources/js/views/courts/CourtShowView.vue": {
+    "file": "assets/CourtShowView-Cq_AKEy8.js",
+    "name": "CourtShowView",
+    "src": "resources/js/views/courts/CourtShowView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_VContainer-DWIUgGa9.js",
+      "_VAlert-DPVT18nn.js",
+      "_VRow-BQQfMNrT.js"
+    ],
+    "css": [
+      "assets/app-I3dj0z5H.css"
+    ]
+  },
+  "resources/js/views/courts/CourtsListView.vue": {
+    "file": "assets/CourtsListView-Dt4vs3hY.js",
+    "name": "CourtsListView",
+    "src": "resources/js/views/courts/CourtsListView.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_VContainer-DWIUgGa9.js",
+      "_VAlert-DPVT18nn.js",
+      "_VTable-rNnHN6Wq.js",
+      "_VChip-BjjvW4VI.js"
+    ],
+    "css": [
+      "assets/app-I3dj0z5H.css"
     ]
   }
 }
