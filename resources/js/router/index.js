@@ -7,6 +7,43 @@ const routes = [
         component: () => import('../views/DashboardView.vue'),
         meta: { title: 'Overview' },
     },
+
+    // ***** Work **** //
+
+    // tasks
+    {
+        path: '/tasks/index',
+        name: 'tasks.index',
+        component: () => import('../views/tasks/TasksListView.vue'),
+        meta: { title: 'New Task' },
+    },
+
+    // calender
+    {
+        path: '/calender/index',
+        name: 'calender.index',
+        component: () => import('../views/calender/CalenderListView.vue'),
+        meta: { title: 'New Task' },
+    },
+
+    // Meetings
+    {
+        path: '/meetings/index',
+        name: 'meetings.index',
+        component: () => import('../views/meetings/MeetingsListView.vue'),
+        meta: { title: 'New Notification' },
+    },
+
+    // notifications
+    {
+        path: '/notifications/index',
+        name: 'notifications.index',
+        component: () => import('../views/calender/CalenderListView.vue'),
+        meta: { title: 'New Notification' },
+    },
+
+    // ***** Legal **** //
+    // cases
     {
         path: '/cases',
         name: 'cases.index',
@@ -33,32 +70,8 @@ const routes = [
         meta: { title: 'Edit case' },
         props: true,
     },
-    {
-        path: '/clients',
-        name: 'clients.index',
-        component: () => import('../views/clients/ClientsListView.vue'),
-        meta: { title: 'Clients' },
-    },
-    {
-        path: '/clients/create',
-        name: 'clients.create',
-        component: () => import('../views/clients/ClientFormView.vue'),
-        meta: { title: 'New client' },
-    },
-    {
-        path: '/clients/:id',
-        name: 'clients.show',
-        component: () => import('../views/clients/ClientShowView.vue'),
-        meta: { title: 'Client' },
-        props: true,
-    },
-    {
-        path: '/clients/:id/edit',
-        name: 'clients.edit',
-        component: () => import('../views/clients/ClientFormView.vue'),
-        meta: { title: 'Edit client' },
-        props: true,
-    },
+
+    // courts
     {
         path: '/courts',
         name: 'courts.index',
@@ -85,6 +98,60 @@ const routes = [
         meta: { title: 'Edit court' },
         props: true,
     },
+
+    // clients
+    {
+        path: '/clients',
+        name: 'clients.index',
+        component: () => import('../views/clients/ClientsListView.vue'),
+        meta: { title: 'Clients' },
+    },
+    {
+        path: '/clients/create',
+        name: 'clients.create',
+        component: () => import('../views/clients/ClientFormView.vue'),
+        meta: { title: 'New client' },
+    },
+    {
+        path: '/clients/:id',
+        name: 'clients.show',
+        component: () => import('../views/clients/ClientShowView.vue'),
+        meta: { title: 'Client' },
+        props: true,
+    },
+    {
+        path: '/clients/:id/edit',
+        name: 'clients.edit',
+        component: () => import('../views/clients/ClientFormView.vue'),
+        meta: { title: 'Edit client' },
+        props: true,
+    },
+
+
+
+    // ***** AI Assistant **** //
+
+    // ***** Finance **** //
+
+    // ***** Reports **** //
+
+    // ***** Users **** //
+    // Users
+    {
+        path: '/users/index',
+        name: 'users.index',
+        component: () => import('../views/users/UsersListView.vue'),
+        meta: { title: 'New Task' },
+    },
+
+    // ***** Logs **** //
+
+   // ***** Settings **** //
+
+
+
+
+
 ];
 
 export default createRouter({

@@ -1,54 +1,38 @@
 <template>
     <v-app>
-        <v-navigation-drawer v-model="drawer" rail-expand permanent elevation="0" class="border-e">
-            <div class="px-4 py-5">
-                <div class="d-flex align-center ga-3">
-                    <v-avatar color="primary" size="42" rounded="lg">
-                        <span class="text-subtitle-1 font-weight-bold">O</span>
-                    </v-avatar>
-                    <div>
-                        <div class="text-subtitle-1 font-weight-bold text-secondary">Ormano</div>
-                        <div class="text-caption text-medium-emphasis">Legal ERP</div>
-                    </div>
-                </div>
-            </div>
-
-            <v-divider />
-
+        <v-navigation-drawer v-model="drawer" permanent>
+            <!-- Navigation List -->
             <v-list nav class="px-2 py-4">
-                <v-list-item
-                    v-for="item in navItems"
-                    :key="item.title"
-                    :to="item.to"
-                    :prepend-icon="item.icon"
-                    :title="item.title"
-                    :subtitle="item.subtitle"
-                    rounded="xl"
-                    class="mb-2"
-                    color="primary"
-                    link
-                />
+                <!-- Loop through groups -->
+                <template v-for="(group, groupIndex) in navItems" :key="groupIndex">
+                    <!-- Group with toggle -->
+                    <v-list-group
+                        v-model="group.open" 
+                        prepend-icon="mdi-chevron-down"
+                        class="nav-group"
+                    >
+                        <template v-slot:activator>
+                            <span class="group-title">{{ group.group }}</span>
+                        </template>
+
+                        <!-- Group Items -->
+                        <v-list-item
+                            v-for="item in group.items"
+                            :key="item.title"
+                            :to="item.to"
+                            :prepend-icon="item.icon"
+                            :title="item.title"
+                            :subtitle="item.subtitle"
+                            rounded="xl"
+                            class="mb-2 nav-item"
+                            color="primary"
+                            link
+                        />
+                    </v-list-group>
+                </template>
             </v-list>
-
-            <template #append>
-                <div class="pa-4">
-                    <v-card color="secondary" rounded="xl" class="text-white">
-                        <v-card-text>
-                            <div class="text-subtitle-2 font-weight-bold mb-1">Blade workspace</div>
-                            <div class="text-caption text-white text-opacity-80 mb-2">
-                                Server-rendered forms (no SPA): same data, classic HTML.
-                            </div>
-                            <div class="d-flex flex-column ga-1">
-                                <a class="text-caption text-white" href="/cases">/cases</a>
-                                <a class="text-caption text-white" href="/clients">/clients</a>
-                                <a class="text-caption text-white" href="/courts">/courts</a>
-                            </div>
-                        </v-card-text>
-                    </v-card>
-                </div>
-            </template>
         </v-navigation-drawer>
-
+            
         <v-app-bar flat color="surface" class="border-b">
             <v-app-bar-nav-icon variant="text" @click="drawer = !drawer" />
             <v-toolbar-title class="font-weight-bold">{{ pageTitle }}</v-toolbar-title>
@@ -94,12 +78,104 @@ import { useRoute } from 'vue-router';
 const drawer = ref(true);
 const route = useRoute();
 
-const navItems = [
-    { title: 'Overview', subtitle: 'Dashboard', icon: 'mdi-view-dashboard-outline', to: { name: 'dashboard' } },
-    { title: 'Cases', subtitle: 'Legal matters', icon: 'mdi-briefcase-outline', to: { name: 'cases.index' } },
-    { title: 'Clients', subtitle: 'People & parties', icon: 'mdi-account-group-outline', to: { name: 'clients.index' } },
-    { title: 'Courts', subtitle: 'Directory', icon: 'mdi-bank-outline', to: { name: 'courts.index' } },
-];
+const navItems = ref([
+    {
+        group: '🏠 Dashboard',
+        open: false,
+        items: [
+            { title: 'Overview', subtitle: 'Dashboard', icon: 'mdi-view-dashboard-outline', to: { name: 'dashboard' } },
+        ],
+    },
+    {
+        group: '🟩 Work',
+        open: true,
+        items: [
+            { title: 'Tasks', subtitle: 'Manage tasks', icon: 'mdi-clipboard-text-outline', to: { name: 'tasks.index' } },
+            // { title: 'Calendar', subtitle: 'Schedule', icon: 'mdi-calendar-outline', to: { name: 'calendar.index' } },
+            // { title: 'Meetings', subtitle: 'Appointments', icon: 'mdi-video-outline', to: { name: 'meetings.index' } },
+            { title: 'Notifications', subtitle: 'Alerts', icon: 'mdi-bell-outline', to: { name: 'notifications.index' } },
+        ],
+    },
+    {
+        group: '⚖️ Legal',
+        open: true,
+        items: [
+            { title: 'Cases', subtitle: 'Legal matters', icon: 'mdi-briefcase-outline', to: { name: 'cases.index' } },
+            { title: 'Clients', subtitle: 'People & parties', icon: 'mdi-account-group-outline', to: { name: 'clients.index' } },
+            { title: 'Courts', subtitle: 'Directory', icon: 'mdi-bank-outline', to: { name: 'courts.index' } },
+            // { title: 'Documents', subtitle: 'Case files', icon: 'mdi-file-document-outline', to: { name: 'documents.index' } },
+            // { title: 'Templates', subtitle: 'Legal templates', icon: 'mdi-file-outline', to: { name: 'templates.index' } },
+        ],
+    },
+    {
+        group: '🤖 AI Assistant',
+        open: false,
+        items: [
+            // { title: 'AI Agent', subtitle: 'Automation', icon: 'mdi-robot-outline', to: { name: 'ai.agent' } },
+            // { title: 'Case Analyzer', subtitle: 'Insights', icon: 'mdi-magnify', to: { name: 'ai.caseAnalyzer' } },
+            // { title: 'Draft Generator', subtitle: 'Document drafts', icon: 'mdi-file-edit-outline', to: { name: 'ai.draftGenerator' } },
+            // { title: 'Proofreading', subtitle: 'Review documents', icon: 'mdi-spellcheck', to: { name: 'ai.proofreading' } },
+        ],
+    },
+    {
+        group: '💰 Finance',
+        open: false,
+        items: [
+            // { title: 'Invoices', subtitle: 'Billing', icon: 'mdi-receipt-outline', to: { name: 'finance.invoices' } },
+            // { title: 'Payments', subtitle: 'Transactions', icon: 'mdi-cash-multiple', to: { name: 'finance.payments' } },
+            // { title: 'Expenses', subtitle: 'Costs', icon: 'mdi-currency-usd', to: { name: 'finance.expenses' } },
+            // { title: 'Subscriptions', subtitle: 'Recurring payments', icon: 'mdi-autorenew', to: { name: 'finance.subscriptions' } },
+        ],
+    },
+    {
+        group: '📊 Reports',
+        open: false,
+        items: [
+            // { title: 'Analytics', subtitle: 'Performance', icon: 'mdi-chart-line', to: { name: 'reports.analytics' } },
+            // { title: 'Success Rate', subtitle: 'Case outcomes', icon: 'mdi-check-circle-outline', to: { name: 'reports.successRate' } },
+            // { title: 'Financial Health', subtitle: 'Finance overview', icon: 'mdi-finance', to: { name: 'reports.financialHealth' } },
+        ],
+    },
+    {
+        group: '👥 Users',
+        open: false,
+        items: [
+            // { title: 'Users', subtitle: 'Manage users', icon: 'mdi-account-outline', to: { name: 'users.index' } },
+            // { title: 'Roles & Permissions', subtitle: 'Access control', icon: 'mdi-shield-account-outline', to: { name: 'roles.index' } },
+        ],
+    },
+    {
+        group: '🧾 Logs',
+        open: false,
+        items: [
+            // { title: 'Audit Logs', subtitle: 'Track changes', icon: 'mdi-file-document-box-outline', to: { name: 'logs.audit' } },
+            // { title: 'Error Logs', subtitle: 'System issues', icon: 'mdi-alert-circle-outline', to: { name: 'logs.error' } },
+        ],
+    },
+    {
+        group: '⚙️ Settings',
+        open: false,
+        items: [
+            // { title: 'General', subtitle: 'System settings', icon: 'mdi-cog-outline', to: { name: 'settings.general' } },
+            // { title: 'Feature Flags', subtitle: 'Toggle features', icon: 'mdi-toggle-switch-outline', to: { name: 'settings.featureFlags' } },
+            // { title: 'Languages', subtitle: 'Localization', icon: 'mdi-translate', to: { name: 'settings.languages' } },
+        ],
+    },
+]);
 
 const pageTitle = computed(() => (route.meta.title ? String(route.meta.title) : 'Ormano'));
 </script>
+
+<style>
+.nav-group {
+    margin: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+.group-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+.nav-item {
+    margin: 0.5rem 0;
+}
+</style>
