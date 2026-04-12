@@ -141,7 +141,27 @@ const routes = [
         path: '/users/index',
         name: 'users.index',
         component: () => import('../views/users/UsersListView.vue'),
-        meta: { title: 'New Task' },
+        meta: { title: 'Users' },
+    },
+    {
+        path: '/users/create',
+        name: 'users.create',
+        component: () => import('../views/users/UsersFormView.vue'),
+        meta: { title: 'New User' },
+    },
+    {
+        path: '/users/:id/show',
+        name: 'users.show',
+        component: () => import('../views/users/UsersShowView.vue'),
+        meta: { title: 'User' },
+        props: true,
+    },
+    {
+        path: '/users/:id/edit',
+        name: 'users.edit',
+        component: () => import('../views/users/UsersFormView.vue'),
+        meta: { title: 'Edit User' },
+        props: true,
     },
 
     // ***** Logs **** //

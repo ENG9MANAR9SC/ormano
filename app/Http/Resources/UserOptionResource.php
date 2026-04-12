@@ -20,6 +20,8 @@ class UserOptionResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
+            'role' => $this->role,
+            'is_active' => $this->is_active,
         ];
     }
 }
