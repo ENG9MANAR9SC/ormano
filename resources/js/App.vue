@@ -3,32 +3,38 @@
         <v-navigation-drawer v-model="drawer" permanent>
             <!-- Navigation List -->
             <v-list nav class="px-2 py-4">
+                <v-icon>mdi-chevron-down</v-icon>
                 <!-- Loop through groups -->
                 <template v-for="(group, groupIndex) in navItems" :key="groupIndex">
-                    <!-- Group with toggle -->
-                    <v-list-group
-                        v-model="group.open" 
-                        prepend-icon="mdi-chevron-down"
-                        class="nav-group"
-                    >
-                        <template v-slot:activator>
+                    <div class="nav-group">
+                        <!-- Group Title -->
+                        <div
+                            class="group-title-btn"
+                            @click="toggleGroup(group)"
+                        >
+                            <v-icon class="mr-2">{{ group.icon }}</v-icon>
                             <span class="group-title">{{ group.group }}</span>
-                        </template>
+                            <v-icon class="ml-auto">
+                                {{ group.open ? 'mdi-chevron-up' : 'mdi-chevron-down' }}
+                            </v-icon>
+                        </div>
 
                         <!-- Group Items -->
-                        <v-list-item
-                            v-for="item in group.items"
-                            :key="item.title"
-                            :to="item.to"
-                            :prepend-icon="item.icon"
-                            :title="item.title"
-                            :subtitle="item.subtitle"
-                            rounded="xl"
-                            class="mb-2 nav-item"
-                            color="primary"
-                            link
-                        />
-                    </v-list-group>
+                        <div v-if="group.open" class="group-items">
+                            <v-list-item
+                                v-for="item in group.items"
+                                :key="item.title"
+                                :to="item.to"
+                                :prepend-icon="item.icon"
+                                :title="item.title"
+                                :subtitle="item.subtitle"
+                                rounded="xl"
+                                class="mb-2 nav-item"
+                                color="primary"
+                                link
+                            />
+                        </div>
+                    </div>
                 </template>
             </v-list>
         </v-navigation-drawer>
@@ -80,25 +86,26 @@ const route = useRoute();
 
 const navItems = ref([
     {
-        group: '🏠 Dashboard',
-        open: false,
+        group: 'Dashboard',
+        icon: 'mdi-view-dashboard-outline',
+        open: true,
         items: [
             { title: 'Overview', subtitle: 'Dashboard', icon: 'mdi-view-dashboard-outline', to: { name: 'dashboard' } },
         ],
     },
     {
-        group: '🟩 Work',
-        open: true,
+        group: 'Work',
+        icon: 'mdi-briefcase-outline',
+        open: false, 
         items: [
             { title: 'Tasks', subtitle: 'Manage tasks', icon: 'mdi-clipboard-text-outline', to: { name: 'tasks.index' } },
-            // { title: 'Calendar', subtitle: 'Schedule', icon: 'mdi-calendar-outline', to: { name: 'calendar.index' } },
-            // { title: 'Meetings', subtitle: 'Appointments', icon: 'mdi-video-outline', to: { name: 'meetings.index' } },
             { title: 'Notifications', subtitle: 'Alerts', icon: 'mdi-bell-outline', to: { name: 'notifications.index' } },
         ],
     },
     {
-        group: '⚖️ Legal',
-        open: true,
+        group: 'Legal',
+        icon: 'mdi-scale-balance',
+        open: false,
         items: [
             { title: 'Cases', subtitle: 'Legal matters', icon: 'mdi-briefcase-outline', to: { name: 'cases.index' } },
             { title: 'Clients', subtitle: 'People & parties', icon: 'mdi-account-group-outline', to: { name: 'clients.index' } },
@@ -108,7 +115,8 @@ const navItems = ref([
         ],
     },
     {
-        group: '🤖 AI Assistant',
+        group: 'AI Assistant',
+        icon: 'mdi-scale-balance',
         open: false,
         items: [
             // { title: 'AI Agent', subtitle: 'Automation', icon: 'mdi-robot-outline', to: { name: 'ai.agent' } },
@@ -118,7 +126,8 @@ const navItems = ref([
         ],
     },
     {
-        group: '💰 Finance',
+        group: 'Finance',
+        icon: 'mdi-scale-balance',
         open: false,
         items: [
             // { title: 'Invoices', subtitle: 'Billing', icon: 'mdi-receipt-outline', to: { name: 'finance.invoices' } },
@@ -128,7 +137,8 @@ const navItems = ref([
         ],
     },
     {
-        group: '📊 Reports',
+        group: 'Reports',
+        icon: 'mdi-scale-balance',
         open: false,
         items: [
             // { title: 'Analytics', subtitle: 'Performance', icon: 'mdi-chart-line', to: { name: 'reports.analytics' } },
@@ -137,15 +147,17 @@ const navItems = ref([
         ],
     },
     {
-        group: '👥 Users',
+        group: 'Users',
+        icon: 'mdi-scale-balance',
         open: false,
         items: [
-            // { title: 'Users', subtitle: 'Manage users', icon: 'mdi-account-outline', to: { name: 'users.index' } },
-            // { title: 'Roles & Permissions', subtitle: 'Access control', icon: 'mdi-shield-account-outline', to: { name: 'roles.index' } },
+             { title: 'Users', subtitle: 'Manage users', icon: 'mdi-account-outline', to: { name: 'users.index' } },
+             { title: 'Roles & Permissions', subtitle: 'Access control', icon: 'mdi-shield-account-outline', to: { name: 'roles.index' } },
         ],
     },
     {
-        group: '🧾 Logs',
+        group: 'Logs',
+        icon: 'mdi-scale-balance',
         open: false,
         items: [
             // { title: 'Audit Logs', subtitle: 'Track changes', icon: 'mdi-file-document-box-outline', to: { name: 'logs.audit' } },
@@ -153,7 +165,8 @@ const navItems = ref([
         ],
     },
     {
-        group: '⚙️ Settings',
+        group: 'Settings',
+        icon: 'mdi-scale-balance',
         open: false,
         items: [
             // { title: 'General', subtitle: 'System settings', icon: 'mdi-cog-outline', to: { name: 'settings.general' } },
@@ -164,6 +177,10 @@ const navItems = ref([
 ]);
 
 const pageTitle = computed(() => (route.meta.title ? String(route.meta.title) : 'Ormano'));
+
+function toggleGroup(group) {
+    group.open = !group.open;
+}
 </script>
 
 <style>
@@ -171,9 +188,16 @@ const pageTitle = computed(() => (route.meta.title ? String(route.meta.title) : 
     margin: 0.5rem;
     margin-bottom: 1.5rem;
 }
-.group-title {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+.group-title-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.group-title-btn:hover {
+    background-color: var(--v-theme-primary-lighten-4);
+    color: var(--v-theme-primary);
 }
 .nav-item {
     margin: 0.5rem 0;

@@ -2,20 +2,23 @@
 
 namespace Illuminate\Foundation\Http;
 
-use Carbon\CarbonInterval;
+use Throwable;
 use DateTimeInterface;
-use Illuminate\Contracts\Debug\ExceptionHandler;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\Http\Kernel as KernelContract;
-use Illuminate\Foundation\Events\Terminating;
-use Illuminate\Foundation\Http\Events\RequestHandled;
-use Illuminate\Routing\Pipeline;
+use Carbon\CarbonInterval;
+use InvalidArgumentException;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Carbon;
+use Illuminate\Routing\Pipeline;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\InteractsWithTime;
-use InvalidArgumentException;
-use Throwable;
+use Illuminate\Foundation\Events\Terminating;
+use Illuminate\Contracts\Debug\ExceptionHandler;
+use Illuminate\Contracts\Foundation\Application;
+use Spatie\Permission\Middlewares\RoleMiddleware;
+use Illuminate\Contracts\Http\Kernel as KernelContract;
+use Illuminate\Foundation\Http\Events\RequestHandled;
+use Spatie\Permission\Middlewares\PermissionMiddleware;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 
 class Kernel implements KernelContract
 {
@@ -61,7 +64,12 @@ class Kernel implements KernelContract
      *
      * @var array<string, array<int, class-string|string>>
      */
-    protected $middlewareGroups = [];
+    protected $middlewareGroups = [
+        'web' => [
+            // Other middleware...
+            VerifyCsrfToken::class, // CSRF protection middleware
+        ],
+    ];
 
     /**
      * The application's route middleware.
@@ -70,7 +78,10 @@ class Kernel implements KernelContract
      *
      * @deprecated
      */
-    protected $routeMiddleware = [];
+    protected $routeMiddleware = [
+        'role' => RoleMiddleware::class,
+        'permission' => PermissionMiddleware::class,
+    ];
 
     /**
      * The application's middleware aliases.

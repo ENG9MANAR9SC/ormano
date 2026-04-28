@@ -163,7 +163,19 @@ const routes = [
         meta: { title: 'Edit User' },
         props: true,
     },
-
+    {
+        path: '/roles',
+        name: 'roles.index',
+        component: () => import('../views/users/RolesListView.vue'),
+        meta: { title: 'Roles', requiresAuth: true },
+    },
+    {
+        path: '/permissions',
+        name: 'permissions.index',
+        component: () => import('../views/users/PermissionsListView.vue'),
+        meta: { title: 'Permissions', requiresAuth: true },
+    },
+  
     // ***** Logs **** //
 
    // ***** Settings **** //
