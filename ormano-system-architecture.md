@@ -1,144 +1,186 @@
-Ormano System Architecture
-1. Overview
-The Ormano system is a modular application designed to manage legal workflows, financial operations, analytics, and AI-powered features. The architecture is structured around Domain-Driven Design (DDD) principles and modular microservices. Each module is independent and can be enabled or disabled using Feature Flags.
+# Ormano System Architecture
 
-2. High-Level Architecture
-The system is divided into the following domains:
+## 1. Overview
+Ormano is a modular legal platform for law offices, built with DDD boundaries so each capability can evolve independently.  
+Modules can be enabled or disabled with feature flags and module toggles.
 
-Core: Handles users, roles, permissions, and system settings.
-Legal: Manages cases, clients, courts, and documents.
-Work Management: Tracks tasks, meetings, and calendars.
-Finance: Manages orders, invoices, expenses, and financial reports.
-Analytics & Logs: Provides reports, audit logs, and error tracking.
-Communication: Handles notifications and templates.
-AI Module: Provides AI-powered features like document generation, proofreading, and case analysis.
-3. Modular Structure
-The system is organized into modules. Each module has its own controllers, services, repositories, and database tables. Below is the proposed structure:
+Core principles:
+- API-first backend (Laravel)
+- Arabic/English localization
+- Security and traceability by design (RBAC + audit)
+- AI-assisted legal productivity with human approval
+
+---
+
+## 2. High-Level Domains
+- Identity: users, roles, permissions, authentication.
+- Legal: case lifecycle, parties, hearings, outcomes.
+- Document: templates, document versions, legal artifacts.
+- Scheduling: tasks, calendar, reminders, deadlines.
+- Communication: notifications and delivery channels.
+- Finance: orders, invoices, payments, refunds, expenses, tax.
+- Subscription: Trial -> Basic -> Pro lifecycle.
+- Analytics: success rate, workload, financial health.
+- Audit: immutable activity log and timeline.
+- Platform: feature flags, module toggles, localization, health checks.
+- AI: legal template generation, proofreading, summarization, gap analysis.
+- Search: unified intelligent search across modules.
+
+---
+
+## 3. Module Structure
+```text
 Ormano
-├── Core
+├── Identity
 │   ├── Users
-│   ├── Roles & Permissions
-│   ├── Settings
-│   ├── Feature Flags
+│   ├── Roles
+│   ├── Permissions
 ├── Legal
 │   ├── Cases
-│   ├── Clients
-│   ├── Courts (Mahakem)
+│   ├── Parties
+│   ├── Hearings
+│   ├── Courts
+├── Document
+│   ├── Templates
 │   ├── Documents
 │   ├── Document Versions
-├── Work Management
+├── Scheduling
 │   ├── Tasks
 │   ├── Meetings
 │   ├── Calendar
-├── Finance
-│   ├── Orders
-│   ├── Billing Documents
-│   ├── Invoices
-│   ├── Credit Notes
-│   ├── Refunds
-│   ├── Expenses
-│   ├── Plans
-│   ├── Referrals
-├── Analytics & Logs
-│   ├── Reports
-│   ├── Audit Logs
-│   ├── Error Logs
-│   ├── AI Logs
+│   ├── Reminders
 ├── Communication
 │   ├── Notifications
-│   ├── Templates
-├── AI Module
-    ├── AI Agent
-    ├── AI Agent Logs
+│   ├── Notification Templates
+│   ├── Delivery Logs
+├── Finance
+│   ├── Orders
+│   ├── Invoices
+│   ├── Refunds
+│   ├── Payments
+│   ├── Expenses
+│   ├── Tax Reports
+│   ├── Currencies
+├── Subscription
+│   ├── Plans
+│   ├── Subscriptions
+│   ├── Quotas
+├── Analytics
+│   ├── KPI Reports
+│   ├── Success Rate
+│   ├── Workload
+│   ├── Financial Health
+├── Audit
+│   ├── Activity Logs
+├── Platform
+│   ├── Feature Flags
+│   ├── Module Toggles
+│   ├── Settings
+│   ├── Localization
+│   ├── Health Checks
+├── AI
+│   ├── AI Agent
+│   ├── Prompt Templates
+│   ├── AI Logs
+├── Search
+    ├── Indexing
+    ├── Ranking
+```
 
-    4. Core Module
-4.1 Users
-Responsibilities:
-Manage user accounts, profiles, and authentication.
-Support multiple user types: Trainee, Lawyer, Client, Visitor.
-Endpoints:
-POST /users: Create a new user.
-GET /users: List all users.
-GET /users/{id}: Get user details.
-PUT /users/{id}: Update user details.
-DELETE /users/{id}: Delete a user.
-4.2 Roles & Permissions
-Responsibilities:
-Manage roles and permissions for users.
-Assign roles to users and permissions to roles.
-Endpoints:
-GET /roles: List all roles.
-POST /roles: Create a new role.
-PUT /roles/{id}: Update a role.
-DELETE /roles/{id}: Delete a role.
-GET /permissions: List all permissions.
-4.3 Settings
-Responsibilities:
-Manage system-wide settings (e.g., languages, currencies).
-Enable/disable modules using Feature Flags.
-4.4 Feature Flags
-Responsibilities:
-Dynamically enable or disable features.
-Example: Enable AI Agent, disable Notifications.
-5. Legal Module
-5.1 Cases
-Responsibilities:
-Manage legal cases, including case details, statuses, and associated clients.
-Endpoints:
-POST /cases: Create a new case.
-GET /cases: List all cases.
-GET /cases/{id}: Get case details.
-PUT /cases/{id}: Update case details.
-DELETE /cases/{id}: Delete a case.
-5.2 Clients
-Responsibilities:
-Manage client data, including personal details and contact information.
-Endpoints:
-POST /clients: Create a new client.
-GET /clients: List all clients.
-GET /clients/{id}: Get client details.
-5.3 Courts (Mahakem)
-Responsibilities:
-Manage court-related data (e.g., court names, locations, jurisdictions).
-5.4 Documents
-Responsibilities:
-Manage legal documents and their versions.
-Track changes to documents.
-6. Work Management Module
-6.1 Tasks
-Responsibilities:
-Manage tasks assigned to users.
-Track task statuses and deadlines.
-6.2 Meetings
-Responsibilities:
-Schedule and manage meetings.
-Integrate with the calendar.
-6.3 Calendar
-Responsibilities:
-Provide a unified calendar for tasks, meetings, and deadlines.
-7. Finance Module
-7.1 Orders & Invoices
-Responsibilities:
-Manage orders, invoices, and refunds.
-Support online payments (Visa, MasterCard, Cash).
-7.2 Expenses
-Responsibilities:
-Track office expenses (e.g., rent, electricity, transportation).
-7.3 Tax Reports
-Responsibilities:
-Generate tax reports based on financial data.
-7.4 Subscription Management
-Responsibilities:
-8. Analytics & Logs Module
-8.1 Reports
-Responsibilities:
-Generate reports for success rates, workload, and financial health.
-8.2 Audit Logs
-Responsibilities:
-Track user activities (e.g., "Trainee uploaded a document at 10:00 AM").
-8.3 Error Logs
-Responsibilities:
-Track system errors and exceptions.
-8.4 AI Logs
-Responsibilities:
-Track AI-related activities (e.g., document generation, proofreading).
+---
+
+## 4. Requirement Coverage
+
+### Identity
+- Supports Trainee, Lawyer, Client, Visitor user types.
+- Role and permission management for all modules.
+
+### Legal + Document
+- Full case management and workflow tracking.
+- Document handling with template-based drafting.
+- Version control for legal files and restore capability.
+
+### Scheduling + Communication
+- Unified calendar and hearing/task reminders.
+- Notification engine (in-app, email, optional SMS/WhatsApp).
+
+### AI (Killer Feature)
+- AI legal template writing.
+- Arabic legal/language proofreading.
+- Case summarization.
+- Gap analysis for missing arguments/evidence.
+
+### Finance + Subscription
+- Orders, invoices, refunds.
+- Payment channels: Visa/MasterCard and cash.
+- Multi-currency support.
+- Expense tracking for office costs.
+- Tax report generation.
+- Subscription plans and upgrade/downgrade flow.
+
+### Analytics + Audit + Platform + Search
+- Success rate, workload, and monthly profit/loss reporting.
+- Immutable audit log for legal traceability.
+- Module enable/disable.
+- Monitoring, error handling, and health check endpoints.
+- Unified smart search across key entities.
+
+---
+
+## 5. Example API Surface (Initial)
+
+Identity:
+- `POST /users`
+- `GET /users`
+- `POST /roles`
+- `POST /roles/{roleId}/permissions`
+
+Legal:
+- `POST /cases`
+- `GET /cases/{id}`
+- `POST /cases/{id}/assignments`
+- `POST /cases/{id}/close`
+
+Document:
+- `POST /documents/from-template`
+- `POST /documents/{id}/versions`
+- `POST /documents/{id}/restore/{versionId}`
+
+Scheduling:
+- `POST /calendar/events`
+- `POST /deadlines`
+
+Finance:
+- `POST /orders`
+- `POST /invoices`
+- `POST /payments/card`
+- `POST /payments/cash`
+- `POST /refunds`
+- `POST /expenses`
+
+Analytics:
+- `GET /reports/success-rate`
+- `GET /reports/workload`
+- `GET /reports/financial-health`
+
+Platform:
+- `PUT /modules/{module}/toggle`
+- `GET /health`
+
+---
+
+## 6. DDD Implementation Notes
+- Keep domain logic in aggregates/value objects, not controllers.
+- Emit domain events for side effects (notifications, indexing, analytics).
+- Keep repository interfaces in domain and implementations in infrastructure.
+- Use module toggles to avoid coupling optional capabilities.
+- Enforce audit logging for sensitive operations by policy.
+
+---
+
+## 7. Delivery Roadmap
+1. Foundation: Identity, Legal, Document, Audit, AR/EN.
+2. Productivity: Scheduling, Communication, Search.
+3. Commerce: Finance + Subscription + Multi-currency.
+4. Intelligence: Analytics + AI legal assistant.
+5. Reliability: Monitoring, error handling, health checks, hardening.

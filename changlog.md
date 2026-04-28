@@ -30,6 +30,23 @@ This changelog follows the principles of [Keep a Changelog](https://keepachangel
   - database migrations and seeders
   - frontend assets
   - test suites
+- Expanded `system_structure.md` into a full DDD module blueprint with requirement-to-domain mapping.
+- Refined `ormano-system-architecture.md` to align with modular domains, feature toggles, and phased roadmap.
+- Documented architecture support for:
+  - roles and permissions
+  - case management workflows
+  - user types (trainee, lawyer, client, visitor)
+  - document versioning and restoration
+  - audit logs and activity timeline
+  - AI legal assistant workflows (template generation, proofreading, summarization, gap analysis)
+  - AR/EN localization
+  - finance lifecycle (orders, invoices, refunds, payments, expenses, tax)
+  - multi-currency
+  - subscription plans (Trial -> Basic -> Pro)
+  - analytics KPIs (success rate, workload, financial health)
+  - module enable/disable controls
+  - monitoring, error handling, and health checks
+  - unified smart search
 
 ### Planned
 - Domain models for cases, clients, courts, hearings, documents, invoices, and notifications.
@@ -38,6 +55,12 @@ This changelog follows the principles of [Keep a Changelog](https://keepachangel
 - AI-assisted drafting and summarization workflows.
 - Reporting dashboards and operational analytics.
 - Arabic-first user experience with English reporting support.
+- Incremental implementation by phases:
+  - Foundation (Identity, Legal, Document, Audit)
+  - Productivity (Scheduling, Communication, Search)
+  - Commerce (Finance, Subscription, Multi-currency)
+  - Intelligence (Analytics, AI features)
+  - Reliability (Monitoring and hardening)
 
 ## [0.1.0] - 2026-04-03
 

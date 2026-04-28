@@ -14,6 +14,9 @@
                     <a href="{{ route('cases.index') }}" class="rounded-lg px-2 py-1 hover:bg-slate-100 hover:text-blue-600">Cases</a>
                     <a href="{{ route('clients.index') }}" class="rounded-lg px-2 py-1 hover:bg-slate-100 hover:text-blue-600">Clients</a>
                     <a href="{{ route('courts.index') }}" class="rounded-lg px-2 py-1 hover:bg-slate-100 hover:text-blue-600">Courts</a>
+                    <a href="{{ route('tasks.index') }}" class="rounded-lg px-2 py-1 hover:bg-slate-100 hover:text-blue-600">Tasks</a>
+                    <a href="{{ route('tasks.calendar') }}" class="rounded-lg px-2 py-1 hover:bg-slate-100 hover:text-blue-600">Task Calendar</a>
+                    <a href="{{ route('documents.index') }}" class="rounded-lg px-2 py-1 hover:bg-slate-100 hover:text-blue-600">Documents</a>
                 </nav>
             </div>
         </header>
