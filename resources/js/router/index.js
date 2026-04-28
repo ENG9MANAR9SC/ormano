@@ -12,10 +12,62 @@ const routes = [
 
     // tasks
     {
-        path: '/tasks/index',
+        path: '/tasks',
         name: 'tasks.index',
         component: () => import('../views/tasks/TasksListView.vue'),
-        meta: { title: 'New Task' },
+        meta: { title: 'Tasks' },
+    },
+    {
+        path: '/tasks/create',
+        name: 'tasks.create',
+        component: () => import('../views/tasks/TaskFormView.vue'),
+        meta: { title: 'New task' },
+    },
+    {
+        path: '/tasks/:id',
+        name: 'tasks.show',
+        component: () => import('../views/tasks/TaskShowView.vue'),
+        meta: { title: 'Task' },
+        props: true,
+    },
+    {
+        path: '/tasks/:id/edit',
+        name: 'tasks.edit',
+        component: () => import('../views/tasks/TaskFormView.vue'),
+        meta: { title: 'Edit task' },
+        props: true,
+    },
+    {
+        path: '/tasks/calendar',
+        name: 'tasks.calendar',
+        component: () => import('../views/tasks/TaskCalendarView.vue'),
+        meta: { title: 'Task calendar' },
+    },
+    {
+        path: '/documents',
+        name: 'documents.index',
+        component: () => import('../views/documents/DocumentsListView.vue'),
+        meta: { title: 'Documents' },
+    },
+    {
+        path: '/documents/create',
+        name: 'documents.create',
+        component: () => import('../views/documents/DocumentFormView.vue'),
+        meta: { title: 'New document' },
+    },
+    {
+        path: '/documents/:id',
+        name: 'documents.show',
+        component: () => import('../views/documents/DocumentShowView.vue'),
+        meta: { title: 'Document' },
+        props: true,
+    },
+    {
+        path: '/documents/:id/edit',
+        name: 'documents.edit',
+        component: () => import('../views/documents/DocumentFormView.vue'),
+        meta: { title: 'Edit document' },
+        props: true,
     },
 
     // calender

@@ -99,6 +99,7 @@ const navItems = ref([
         open: false, 
         items: [
             { title: 'Tasks', subtitle: 'Manage tasks', icon: 'mdi-clipboard-text-outline', to: { name: 'tasks.index' } },
+            { title: 'Task Calendar', subtitle: 'Due dates', icon: 'mdi-calendar-month-outline', to: { name: 'tasks.calendar' } },
             { title: 'Notifications', subtitle: 'Alerts', icon: 'mdi-bell-outline', to: { name: 'notifications.index' } },
         ],
     },
@@ -110,7 +111,7 @@ const navItems = ref([
             { title: 'Cases', subtitle: 'Legal matters', icon: 'mdi-briefcase-outline', to: { name: 'cases.index' } },
             { title: 'Clients', subtitle: 'People & parties', icon: 'mdi-account-group-outline', to: { name: 'clients.index' } },
             { title: 'Courts', subtitle: 'Directory', icon: 'mdi-bank-outline', to: { name: 'courts.index' } },
-            // { title: 'Documents', subtitle: 'Case files', icon: 'mdi-file-document-outline', to: { name: 'documents.index' } },
+            { title: 'Documents', subtitle: 'Case files', icon: 'mdi-file-document-outline', to: { name: 'documents.index' } },
             // { title: 'Templates', subtitle: 'Legal templates', icon: 'mdi-file-outline', to: { name: 'templates.index' } },
         ],
     },
